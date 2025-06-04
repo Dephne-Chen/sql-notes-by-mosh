@@ -26,6 +26,7 @@ WHERE order_date >= '2019-01-01';
 - [AND, OR, NOT 邏輯運算符](#and-or-not-邏輯運算符)
 - [IN / NOT IN 運算符](#in--not-in-運算符)
 - [BETWEEN 運算符](#between-運算符)
+- [LIKE / REGEXP 運算符](#like--regexp-運算符)
 
 ---
 ### AND, OR, NOT 邏輯運算符
@@ -104,3 +105,41 @@ SELECT * FROM customers
 WHERE birth_date BETWEEN '1990-01-01' AND '2000-01-01';
 ```
 ---
+
+### LIKE / REGEXP 運算符
+
+LIKE(模糊比對)
+% ：任意數量的任意字元
+_ ：任意單一字元
+
+REGEXP(正則表達式比對)
+^ ：開頭（例如 ^a → a 開頭）
+$ ：結尾（例如 y$ → y 結尾）
+| ：代表多個搜尋 OR
+[]：字元集合 ex:[abc]e ->ae、be、ce =[a-b]e
+
+### 📌 語法結構
+```sql
+SELECT 欄位
+FROM 資料表
+WHERE 欄位 LIKE/REGEXP 字符串樣式;
+```
+
+### 📘 範例
+```sql
+SELECT * FROM customers
+WHERE last_name LIKE '___y';
+
+SELECT * FROM customers
+WHERE address LIKE '%TRAIL%' OR 
+	    address LIKE '%AVENUE%';
+	    
+SELECT * FROM customers
+WHERE address REGEXP 'TRAIL|AVENUE';
+	    
+SELECT * FROM customers
+WHERE last_name LIKE '^field';	
+
+SELECT * FROM customers
+WHERE last_name LIKE 'field|mac$|^rose';
+```  
