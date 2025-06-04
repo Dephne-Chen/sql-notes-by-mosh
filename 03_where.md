@@ -27,6 +27,7 @@ WHERE order_date >= '2019-01-01';
 - [IN / NOT IN 運算符](#in--not-in-運算符)
 - [BETWEEN 運算符](#between-運算符)
 - [LIKE / REGEXP 運算符](#like--regexp-運算符)
+- [IS NULL / IS NOT NULL 運算符](#is-null--is-not-null運算符)
 
 ---
 ### AND, OR, NOT 邏輯運算符
@@ -142,4 +143,24 @@ WHERE last_name LIKE '^field';
 
 SELECT * FROM customers
 WHERE last_name LIKE 'field|mac$|^rose';
+```  
+
+### IS NULL / IS NOT NULL 運算符
+(尋找有/無缺失值的資料)  
+(= NULL 或 != NULL 是無效的，必須使用 IS NULL 或 IS NOT NULL)  
+
+### 📌 語法結構
+```sql
+SELECT 欄位
+FROM 資料表
+WHERE 欄位 IS NULL;
+```
+  
+### 📘 範例
+```sql
+SELECT * FROM customers
+WHERE phone IS NULL;
+
+SELECT * FROM orders
+WHERE shipped_date IS NOT NULL
 ```  
