@@ -22,13 +22,14 @@ WHERE order_date >= '2019-01-01';
 # 日期和字串一樣要加單引號
 
 ```
-### 子章節索引
+## 子章節索引
 [AND, OR, NOT 邏輯運算符](#and-or-not-邏輯運算符)
+[IN / NOT IN 運算符](#in--not-in-運算符)
 
 ---
-## AND, OR, NOT 邏輯運算符
+### AND, OR, NOT 邏輯運算符
 
-## 📌 語法結構
+### 📌 語法結構
 ```sql
 AND：同時滿足兩個條件
 SELECT 欄位
@@ -46,7 +47,7 @@ FROM 資料表
 WHERE NOT 條件;
 ```
 
-## 📘 範例
+### 📘 範例
 ```sql
 SELECT * FROM order_items
 WHERE order_id = 6 AND (quantity * unit_price) > 30 ;
@@ -57,4 +58,24 @@ WHERE NOT(birth_date > '1990-01-01' OR points >1000);
 # 跟上面同義但更直觀
 SELECT * FROM customers
 WHERE birth_date <= '1990-01-01' AND points <=1000 ;
+```
+
+### IN / NOT IN 運算符
+
+### 📌 語法結構
+```sql
+IN：欄位值「包含在集合內」
+SELECT 欄位
+FROM 資料表
+WHERE 欄位 IN (值1, 值2, 值3);
+
+NOT IN：欄位值「不包含在集合內」
+SELECT 欄位
+FROM 資料表
+WHERE 欄位 NOT IN (值1, 值2);
+```
+### 📘 範例
+```sql
+SELECT * FROM customers
+WHERE state IN ('VA','FL','GA')
 ```
