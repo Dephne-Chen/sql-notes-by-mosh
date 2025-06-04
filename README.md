@@ -7,6 +7,5 @@
 1. [📖 資料庫基本概念](01_intro_database.md)
 2. [🔍 SELECT & FROM 基本查詢](02_select_from.md)
 3. [🎯 WHERE 條件過濾](03_where.md)
-4. [🔗 AND, OR, NOT 邏輯運算符](04_logical_operators.md)
 
 > 未來將加入 GROUP BY、JOIN、視圖、儲存過程等主題 💪
