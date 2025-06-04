@@ -23,8 +23,8 @@ WHERE order_date >= '2019-01-01';
 
 ```
 ## 子章節索引
--[AND, OR, NOT 邏輯運算符](#and-or-not-邏輯運算符)
--[IN / NOT IN 運算符](#in--not-in-運算符)
+- [AND, OR, NOT 邏輯運算符](#and-or-not-邏輯運算符)
+- [IN / NOT IN 運算符](#in--not-in-運算符)
 
 ---
 ### AND, OR, NOT 邏輯運算符
