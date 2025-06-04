@@ -7,9 +7,11 @@
 ```sql
 SELECT 欄位名稱1, 欄位名稱2, ...
 FROM 資料表名稱;
-
+```
+---
 ## 📘 範例
 
+```sql
 SELECT customer_id, phone
 FROM customers;
 
