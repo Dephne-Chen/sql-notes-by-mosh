@@ -23,8 +23,8 @@ WHERE order_date >= '2019-01-01';
 
 ```
 ## 子章節索引
-[AND, OR, NOT 邏輯運算符](#and-or-not-邏輯運算符)
-[IN / NOT IN 運算符](#in--not-in-運算符)
+-[AND, OR, NOT 邏輯運算符](#and-or-not-邏輯運算符)
+-[IN / NOT IN 運算符](#in--not-in-運算符)
 
 ---
 ### AND, OR, NOT 邏輯運算符
@@ -59,7 +59,7 @@ WHERE NOT(birth_date > '1990-01-01' OR points >1000);
 SELECT * FROM customers
 WHERE birth_date <= '1990-01-01' AND points <=1000 ;
 ```
-
+---
 ### IN / NOT IN 運算符
 
 ### 📌 語法結構
