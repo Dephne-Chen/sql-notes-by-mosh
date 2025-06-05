@@ -5,6 +5,9 @@
 - [Joining Across Databases|跨資料庫連接](#joining-across-databases跨資料庫連接)
 - [Self Joins|自連接](#self-joins自連接)
 - [Joining Multiple Tables|多表連接](#joining-multiple-tables多表連接)
+- [Compound Join Conditions|複合連接條件](#compound-join-conditions複合連接條件)
+- [Implicit Join Syntax|隱式連接語法(不建議使用!!)](#implicit-join-syntax隱式連接語法 )
+- [Outer Joins|外連接](#outer-joins外連接)
 
 
 ---
@@ -112,6 +115,73 @@ JOIN clients c
     ON p.client_id = c.client_id
 JOIN payment_methods pm
     ON p.payment_method = pm.payment_method_id ;
+```
+---
+
+### Compound Join Conditions|複合連接條件
+(兩張資料表的關聯不只一個欄位（如：複合主鍵、複合外鍵）時，JOIN 條件需同時比對多個欄位。)
+
+
+### 📌 語法結構
+```sql
+SELECT 欄位
+FROM 資料表1
+JOIN 資料表2
+    ON 資料表1.欄位A = 資料表2.欄位A 
+    AND 資料表1.欄位B = 資料表2.欄位B
+```
+
+### 📘 範例
+```sql
+SELECT *
+FROM order_items oi
+JOIN order_item_notes oin
+    ON oi.order_id = oin.order_id 
+    AND oi.product_id = oin.product_id;
+```
+---
+
+### Implicit Join Syntax|隱式連接語法 
+(舊式 SQL 寫法，容易出錯，不建議使用!!!)   
+(記寫 WHERE 條件，會直接產生交叉連接)  
+
+
+### 📌 語法結構
+```sql
+SELECT 欄位
+FROM 資料表1, 資料表2
+WHERE 資料表1.欄位 = 資料表2.欄位
+```
+
+### 📘 範例
+```sql
+SELECT *
+FROM orders o, customers c
+WHERE o.customer_id = c.customer_id ;
+```
+---
+
+### Outer Joins|外連接
+(允許查詢時「保留一邊所有資料，另一邊沒有對應時以 NULL 補齊」)   
+Left Join：返回左邊表的所有內容   
+Right Join：返回右邊表的所有內容   
+
+### 📌 語法結構
+```sql
+SELECT 欄位
+FROM 資料表1
+LEFT/RIGHT JOIN 資料表2
+    ON 資料表1.欄位 = 資料表2.欄位
+```
+	
+### 📘 範例
+```sql
+SELECT p.product_id,
+       p.name,
+       oi.quantity
+FROM products p
+LEFT JOIN order_items oi
+    ON p.product_id = oi.product_id;
 ```
 ---
 
