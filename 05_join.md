@@ -8,6 +8,9 @@
 - [Compound Join Conditions|複合連接條件](#compound-join-conditions複合連接條件)
 - [Implicit Join Syntax|隱式連接語法(不建議使用!!)](#implicit-join-syntax隱式連接語法 )
 - [Outer Joins|外連接](#outer-joins外連接)
+- [Outer Join Between Multiple Tables|多表外連接](#outer-join-between-multiple-tables多表外連接)
+- [Self Outer Joins|自外連接](#self-outer-joins自外連接)
+- [The Using Clause|USING子句](#the-using-clauseusing子句)
 
 
 ---
@@ -185,3 +188,98 @@ LEFT JOIN order_items oi
 ```
 ---
 
+### Outer Join Between Multiple Tables|多表外連接
+(多表外連接時，盡量都使用同方向，特別建議使用左連接)
+
+### 📌 語法結構
+```sql
+SELECT 欄位
+FROM 資料表1
+LEFT JOIN 資料表2
+    ON 資料表1.欄位 = 資料表2.欄位
+LEFT JOIN 資料表3
+    ON 資料表X.欄位 = 資料表3.欄位
+```
+	
+### 📘 範例
+```sql
+SELECT c.customer_id,
+       o.order_id,
+       sh.name AS shipper 
+FROM customers c
+LEFT JOIN orders o
+    ON c.customer_id = o.customer_id
+LEFT JOIN shippers sh
+    ON o.shipper_id = sh.shipper_id;
+	
+SELECT o.order_date,
+       o.order_id,
+       c.first_name AS customers,
+       sh.name AS shipper,
+       os.name AS status
+FROM orders o
+JOIN customers c
+    ON c.customer_id = o.customer_id
+LEFT JOIN shippers sh
+    ON o.shipper_id = sh.shipper_id
+JOIN order_statuses os
+    ON o.status = os.order_status_id;
+```
+---
+
+### Self Outer Joins|自外連接
+
+### 📌 語法結構
+```sql
+SELECT a.欄位, b.欄位
+FROM 資料表1 a
+LEFT JOIN 資料表1 b
+    ON a.欄位 = b.欄位
+```
+	
+### 📘 範例
+```sql	
+SELECT e.employee_id, 
+       e.first_name, 
+       m.first_name AS manager
+FROM employees e
+LEFT JOIN employees m
+    ON e.reports_to = m.employee_id ;
+```
+---
+
+### The Using Clause|USING子句
+(當JOIN的兩個表中列名稱完全相同時，可用USING子句替換ON子句，更簡潔)
+
+### 📌 語法結構
+```sql
+SELECT 欄位
+FROM 資料表1
+JOIN 資料表2
+    USING (相同的欄位名稱)
+```
+
+### 📘 範例
+```sql	
+SELECT order_id, o.customer_id, first_name, last_name 
+FROM orders o
+JOIN customers c
+    USING (customer_id);
+
+-- USING 內可一次指定多個欄位（如複合主鍵）
+SELECT *
+FROM order_items oi
+JOIN order_item_notes oin
+    USING(order_id, product_id);
+
+-- 兩邊的欄位名稱不同，只能用 ON
+SELECT p.date,
+       c.name AS client,
+       p.amount,
+       pm.name AS payment_method
+FROM payments p
+JOIN clients c
+    USING(client_id)
+JOIN payment_methods pm
+    ON p.payment_method = pm.payment_method_id;
+```
