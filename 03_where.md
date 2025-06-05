@@ -16,7 +16,9 @@ WHERE 篩選條件;
 ```sql
 SELECT * FROM customers
 WHERE points > 3000;
+```
 
+```sql
 SELECT * FROM orders
 WHERE order_date >= '2019-01-01';
 # 日期和字串一樣要加單引號
@@ -54,10 +56,14 @@ WHERE NOT 條件;
 ```sql
 SELECT * FROM order_items
 WHERE order_id = 6 AND (quantity * unit_price) > 30 ;
+```
 
+```sql
 SELECT * FROM customers
 WHERE NOT(birth_date > '1990-01-01' OR points >1000);
+```
 
+```sql
 # 跟上面同義但更直觀
 SELECT * FROM customers
 WHERE birth_date <= '1990-01-01' AND points <=1000 ;
@@ -81,7 +87,9 @@ WHERE 欄位 NOT IN (值1, 值2);
 ```sql
 SELECT * FROM customers
 WHERE state IN ('VA','FL','GA') ;
+```
 
+```sql
 SELECT * FROM products
 WHERE quantity_in_stock IN (49,38,72) ;
 ```
@@ -101,7 +109,9 @@ WHERE 欄位 BETWEEN 起始值 AND 結束值;
 ```sql
 SELECT * FROM customers
 WHERE points BETWEEN 1000 AND 3000;
+```
 
+```sql
 SELECT * FROM customers
 WHERE birth_date BETWEEN '1990-01-01' AND '2000-01-01';
 ```
@@ -130,17 +140,25 @@ WHERE 欄位 LIKE/REGEXP 字符串樣式;
 ```sql
 SELECT * FROM customers
 WHERE last_name LIKE '___y';
+```
 
+```sql
 SELECT * FROM customers
 WHERE address LIKE '%TRAIL%' OR 
-	    address LIKE '%AVENUE%';
-	    
+      address LIKE '%AVENUE%';
+```
+
+```sql    
 SELECT * FROM customers
 WHERE address REGEXP 'TRAIL|AVENUE';
-	    
+```
+
+```sql 	    
 SELECT * FROM customers
 WHERE last_name LIKE '^field';	
+```
 
+```sql 
 SELECT * FROM customers
 WHERE last_name LIKE 'field|mac$|^rose';
 ```  
@@ -160,7 +178,9 @@ WHERE 欄位 IS NULL;
 ```sql
 SELECT * FROM customers
 WHERE phone IS NULL;
+```
 
+```sql
 SELECT * FROM orders
 WHERE shipped_date IS NOT NULL;
 ```  
