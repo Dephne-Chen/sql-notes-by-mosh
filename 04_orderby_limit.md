@@ -15,15 +15,21 @@ ORDER BY 欄位(排序依據);
 ```sql
 SELECT * FROM customers
 ORDER BY first_name ;
+```
 
+```sql
 -- DESC 降序
 SELECT * FROM customers
 ORDER BY customer_id DESC ;
+```
 
+```sql
 -- 依據多列排序
 SELECT * FROM customers
 ORDER BY state, first_name ;
+```
 
+```sql
 -- 透過列位置給數據排序(避免使用，因列順序可能改變)
 SELECT first_name, last_name 
 FROM customers
@@ -47,13 +53,17 @@ LIMIT 筆數;
 ```sql
 SELECT * FROM customers
 LIMIT 5;
+```
 
+```sql
 -- 搭配 offset 進行分頁查詢
 -- (大量資料查詢中使用 OFFSET 效能可能會下降，可考慮 Key-based 分頁策略)
 SELECT * FROM customers
 LIMIT 3 OFFSET 5;
 # 跳過前5筆，取6-8筆
+```
 
+```sql
 SELECT * FROM customers
 LIMIT 5,3 ;
 # 同上
