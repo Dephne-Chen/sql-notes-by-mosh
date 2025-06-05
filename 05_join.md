@@ -33,7 +33,8 @@ SELECT order_id, o.customer_id, first_name, last_name
 FROM orders o
 JOIN customers c
     ON o.customer_id = c.customer_id ;
-
+```
+```sql
 SELECT order_id, p.product_id, quantity, oi.unit_price
 FROM order_items oi
 JOIN products p
@@ -101,7 +102,7 @@ JOIN 資料表3
 ### 📘 範例
 ```sql
 SELECT o.order_id,
-	   o.order_date,
+       o.order_date,
        c.first_name,
        c.last_name,
        os.name AS status
@@ -110,9 +111,11 @@ JOIN customers c
     ON o.customer_id = c.customer_id
 JOIN order_statuses os
     ON o.status = os.order_status_id ;
+```
 
+```sql
 SELECT p.payment_id,
-	   c.name,
+       c.name,
        p.date,
        pm.name AS payment_method
 FROM payments p
@@ -213,7 +216,9 @@ LEFT JOIN orders o
     ON c.customer_id = o.customer_id
 LEFT JOIN shippers sh
     ON o.shipper_id = sh.shipper_id;
-	
+```
+
+```sql	
 SELECT o.order_date,
        o.order_id,
        c.first_name AS customers,
@@ -267,13 +272,17 @@ SELECT order_id, o.customer_id, first_name, last_name
 FROM orders o
 JOIN customers c
     USING (customer_id);
+```
 
+```sql	
 -- USING 內可一次指定多個欄位（如複合主鍵）
 SELECT *
 FROM order_items oi
 JOIN order_item_notes oin
     USING(order_id, product_id);
+```
 
+```sql	
 -- 兩邊的欄位名稱不同，只能用 ON
 SELECT p.date,
        c.name AS client,
