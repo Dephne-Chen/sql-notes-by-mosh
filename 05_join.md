@@ -1,4 +1,4 @@
-# 📎 JOIN 多表資料查詢
+ # 📎 JOIN 多表資料查詢
 
 ## 子章節索引
 - [Inner Joins|內連接](#inner-joins內連接)
@@ -16,7 +16,7 @@
 SELECT 欄位
 FROM 資料表1
 JOIN 資料表2
-  ON 資料表1.欄位 = 資料表2.欄位
+    ON 資料表1.欄位 = 資料表2.欄位
 ```
 
 ### 📘 範例
@@ -24,12 +24,12 @@ JOIN 資料表2
 SELECT order_id, o.customer_id, first_name, last_name 
 FROM orders o
 JOIN customers c
-  ON o.customer_id = c.customer_id ;
+    ON o.customer_id = c.customer_id ;
 
 SELECT order_id, p.product_id, quantity, oi.unit_price
 FROM order_items oi
 JOIN products p
-  ON oi.product_id = p.product_id ;
+    ON oi.product_id = p.product_id ;
 ```
 ---
 ### Joining Across Databases｜跨資料庫連接
@@ -41,7 +41,7 @@ JOIN products p
 SELECT 欄位
 FROM 資料表1
 JOIN 資料庫.資料表2
-	ON 資料表1.欄位 = 資料表2.欄位
+    ON 資料表1.欄位 = 資料表2.欄位
 ```
 
 ### 📘 範例
@@ -49,7 +49,7 @@ JOIN 資料庫.資料表2
 SELECT order_id, p.product_id, quantity, oi.unit_price
 FROM order_items oi
 JOIN sqi_inventory.products p
-	ON oi.product_id = p.product_id ;
+    ON oi.product_id = p.product_id ;
 ```
 ---
 
@@ -61,7 +61,7 @@ JOIN sqi_inventory.products p
 SELECT a.欄位, b.欄位
 FROM 資料表1 a
 JOIN 資料表1 b
-	ON a.欄位 = b.欄位
+    ON a.欄位 = b.欄位
 (使用不同的前綴表示資料表)  
 (別名不可省略，否則 SQL 會混淆)  
 ```
@@ -72,7 +72,7 @@ SELECT e.employee_id,
        m.first_name AS manager
 FROM employees e
 JOIN employees m
-	ON e.reports_to = m.employee_id ;
+    ON e.reports_to = m.employee_id ;
 ```
 ---
 
@@ -85,9 +85,9 @@ JOIN employees m
 SELECT 欄位
 FROM 資料表1
 JOIN 資料表2
-	ON 資料表1.欄位 = 資料表2.欄位
+    ON 資料表1.欄位 = 資料表2.欄位
 JOIN 資料表3
-	ON 資料表X.欄位 = 資料表3.欄位
+    ON 資料表X.欄位 = 資料表3.欄位
 ```
 	
 ### 📘 範例
@@ -99,9 +99,9 @@ SELECT o.order_id,
        os.name AS status
 FROM orders o
 JOIN customers c
-	ON o.customer_id = c.customer_id
+    ON o.customer_id = c.customer_id
 JOIN order_statuses os
-	ON o.status = os.order_status_id
+    ON o.status = os.order_status_id ;
 
 SELECT p.payment_id,
 	   c.name,
@@ -109,9 +109,9 @@ SELECT p.payment_id,
        pm.name AS payment_method
 FROM payments p
 JOIN clients c
-	ON p.client_id = c.client_id
+    ON p.client_id = c.client_id
 JOIN payment_methods pm
-	ON p.payment_method = pm.payment_method_id
+    ON p.payment_method = pm.payment_method_id ;
 ```
 ---
 
