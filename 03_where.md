@@ -80,10 +80,10 @@ WHERE 欄位 NOT IN (值1, 值2);
 ### 📘 範例
 ```sql
 SELECT * FROM customers
-WHERE state IN ('VA','FL','GA')
+WHERE state IN ('VA','FL','GA') ;
 
 SELECT * FROM products
-WHERE quantity_in_stock IN (49,38,72)
+WHERE quantity_in_stock IN (49,38,72) ;
 ```
 ---
 
@@ -162,5 +162,5 @@ SELECT * FROM customers
 WHERE phone IS NULL;
 
 SELECT * FROM orders
-WHERE shipped_date IS NOT NULL
+WHERE shipped_date IS NOT NULL;
 ```  
