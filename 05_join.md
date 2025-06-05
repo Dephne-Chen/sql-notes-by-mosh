@@ -11,6 +11,8 @@
 - [Outer Join Between Multiple Tables|多表外連接](#outer-join-between-multiple-tables多表外連接)
 - [Self Outer Joins|自外連接](#self-outer-joins自外連接)
 - [The Using Clause|USING子句](#the-using-clauseusing子句)
+- [Natural Joins|自然連接(不建議使用!!)](#natural-joins自然連接)
+- [Cross Joins|交叉連接](#cross-joins交叉連接)
 
 
 ---
@@ -282,4 +284,50 @@ JOIN clients c
     USING(client_id)
 JOIN payment_methods pm
     ON p.payment_method = pm.payment_method_id;
+```
+---
+
+### Natural Joins|自然連接
+(不建議使用，無法自行控制)    
+(不用明確指定連接欄位，資料庫會自動用「所有欄位名稱相同」的欄位作為 JOIN 條件)   
+(資料表結構變動（例如多加一個相同名稱欄位），JOIN 條件就會變，不易維護。)  
+
+### 📌 語法結構
+```sql
+SELECT 欄位
+FROM 資料表1
+NATURAL JOIN 資料表2
+```
+
+### 📘 範例
+```sql	
+SELECT * 
+FROM orders o
+JOIN customers c;
+```
+---
+
+### Cross Joins|交叉連接
+(會將左表的每一筆資料與右表的每一筆資料兩兩組合，產生「所有可能組合」)  
+(若有 N 筆 × M 筆，結果會有 N × M 筆資料)  
+(實務上極少用（除非故意要做所有組合、測試、或特殊報表)  
+
+### 📌 語法結構
+```sql
+-- 顯式語法
+SELECT 欄位
+FROM 資料表1
+CROSS JOIN 資料表2
+
+-- 隱式語法
+SELECT 欄位
+FROM 資料表1, 資料表2
+```
+
+### 📘 範例
+```sql	
+SELECT sh.name AS shipper,
+	   p.name AS product
+FROM shippers sh
+CROSS JOIN products p;
 ```
