@@ -1,4 +1,4 @@
-# 🔍 SQL 筆記：SELECT & FROM
+# 🔍 SELECT & FROM 基本查詢
 
 
 
