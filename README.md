@@ -11,6 +11,7 @@
 4. [📊 ORDER BY 排序 & LIMIT 筆數限制](04_orderby_limit.md)
 5. [📎 JOIN 多表資料查詢](05_join.md)
 6. [➕ UNION 合併查詢結果](06_union.md)
+7. [🛠️ 資料操作：INSERT／UPDATE／DELETE](07_insert_update_delete.md)
 
 > 🚧 未來將加入：  
 > 視圖（View）、儲存過程、子查詢、索引等主題 💪
