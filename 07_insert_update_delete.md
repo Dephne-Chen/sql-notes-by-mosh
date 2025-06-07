@@ -6,7 +6,6 @@
 - [Inserting Hierarchical Rows|插入分層行](inserting-hierarchical-rows插入分層行)
 - [Creating a Copy of a Table|創建表複製](creating-a-copy-of-a-table創建表複製)
 
-
 ---
 
 ### Inserting a Row|插入單行
