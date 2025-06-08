@@ -5,6 +5,7 @@
 - [Inserting Multiple Rows|插入多行](#inserting-multiple-rows插入多行)
 - [Inserting Hierarchical Rows|插入分層行](#inserting-hierarchical-rows插入分層行)
 - [Creating a Copy of a Table|創建表複製](#creating-a-copy-of-a-table創建表複製)
+- [Updating a Single Row|更新單行](#updating-a-single-row更新單行)
 
 ---
 
@@ -134,5 +135,29 @@ WHERE payment_date IS NOT NULL;
 ```
 ---
 
+### Updating a Single Row|更新單行
+(修改資料表中符合條件的一筆資料)
 
+
+### 📌 語法結構
+```sql
+UPDATE 資料表
+SET 欄位1 = 值1,欄位2 = 值2
+WHERE 識別資料列的條件
+(若省略WHERE則會更新整張表，務必小心!!)
+```
+
+### 📘 範例
+```sql
+UPDATE invoices
+SET payment_total = 10,payment_date = '2019-01-01'
+WHERE invoice_id = 1;
+```
+```sql
+UPDATE invoices
+SET payment_total = invoice_total * 0.5,
+    payment_date = due_date
+WHERE invoice_id = 3;
+```
+---
 
