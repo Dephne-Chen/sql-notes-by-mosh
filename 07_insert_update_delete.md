@@ -6,6 +6,7 @@
 - [Inserting Hierarchical Rows|插入分層行](#inserting-hierarchical-rows插入分層行)
 - [Creating a Copy of a Table|創建表複製](#creating-a-copy-of-a-table創建表複製)
 - [Updating a Single Row|更新單行](#updating-a-single-row更新單行)
+- [Updating Multiple Rows|更新多行](#updating-multiple-rows更新多行)
 
 ---
 
@@ -158,6 +159,25 @@ UPDATE invoices
 SET payment_total = invoice_total * 0.5,
     payment_date = due_date
 WHERE invoice_id = 3;
+```
+---
+
+### Updating Multiple Rows|更新多行
+(根據條件一次更新多筆資料，常用於批次調整或資料修正)
+
+### 📌 語法結構
+```sql
+UPDATE 資料表
+SET 欄位1 = 值1,欄位2 = 值2
+WHERE 識別資料列的條件(更通用的條件)
+(若省略WHERE則會更新整張表)
+```
+
+### 📘 範例
+```sql
+UPDATE customers
+SET points = points + 50
+WHERE birth_date < '1990-01-01';
 ```
 ---
 
