@@ -8,6 +8,7 @@
 - [Updating a Single Row|更新單行](#updating-a-single-row更新單行)
 - [Updating Multiple Rows|更新多行](#updating-multiple-rows更新多行)
 - [Using Subqueries in Updates|在更新中用子查詢](#using-subqueries-in-updates在更新中用子查詢)
+- [Deleting Rows|刪除行](#deleting-rows刪除行)
 
 ---
 
@@ -198,15 +199,40 @@ UPDATE invoices
 SET payment_total = invoice_total * 0.5
 WHERE client_id = 
 	(SELECT client_id
-	FROM clients
-	WHERE name = 'Myworks');
+	 FROM clients
+	 WHERE name = 'Myworks');
 ```
 ```sql
 UPDATE orders
 SET comments = 'Gold Customer'
 WHERE customer_id IN 
 	(SELECT customer_id
-	FROM customers
-	WHERE points > 3000);
+	 FROM customers
+	 WHERE points > 3000);
 ```
 ---
+
+### Deleting Rows|刪除行
+
+### 📌 語法結構
+```sql
+DELETE FROM 資料表
+WHERE 識別資料列的條件
+(若省略WHERE則會刪除整張表的紀錄)
+
+-- 運用子查詢
+DELETE FROM 資料表
+WHERE 關鍵欄位 = SELECT子查詢
+(若子查詢返回結果為多行，則不能使用 = 要使用 IN)
+```
+
+### 📘 範例
+```sql
+DELETE FROM invoices
+WHERE client_id = 
+	(SELECT client_id
+	 FROM clients
+	 WHERE name = 'Myworks');
+```
+---
+
