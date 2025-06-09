@@ -7,6 +7,7 @@
 - [Creating a Copy of a Table|創建表複製](#creating-a-copy-of-a-table創建表複製)
 - [Updating a Single Row|更新單行](#updating-a-single-row更新單行)
 - [Updating Multiple Rows|更新多行](#updating-multiple-rows更新多行)
+- [Using Subqueries in Updates|在更新中用子查詢](#using-subqueries-in-updates在更新中用子查詢)
 
 ---
 
@@ -122,7 +123,7 @@ WHERE order_date < '2019-01-01';
 ```sql
 CREATE TABLE invoices_archived AS
 SELECT i.invoice_id,
-	   i.number,
+       i.number,
        c.name AS client,
        i.invoice_total,
        i.payment_total,
@@ -131,7 +132,7 @@ SELECT i.invoice_id,
        i.payment_date
 FROM invoices i 
 JOIN clients c
-	USING(client_id)
+    USING(client_id)
 WHERE payment_date IS NOT NULL;
 ```
 ---
@@ -181,3 +182,31 @@ WHERE birth_date < '1990-01-01';
 ```
 ---
 
+### Using Subqueries in Updates|在更新中用子查詢
+
+### 📌 語法結構
+```sql
+UPDATE 資料表
+SET 欄位1 = 值1,欄位2 = 值2
+WHERE 關鍵欄位 = SELECT子查詢
+(若子查詢返回結果為多行，則不能使用 = 要使用 IN)
+```
+
+### 📘 範例
+```sql
+UPDATE invoices
+SET payment_total = invoice_total * 0.5
+WHERE client_id = 
+	(SELECT client_id
+	FROM clients
+	WHERE name = 'Myworks');
+```
+```sql
+UPDATE orders
+SET comments = 'Gold Customer'
+WHERE customer_id IN 
+	(SELECT customer_id
+	FROM customers
+	WHERE points > 3000);
+```
+---
