@@ -4,7 +4,7 @@
 - [Aggregation|聚合函數](#aggregation聚合函數)
 - [The Group By Clause|Group By 子句](#the-group-by-clausegroup-by-子句)
 - [The Having Clause|Having子句](#the-having-clausehaving子句)
-
+- [The Rollup Operator|ROLLUP 運算符](#the-rollup-operatorrollup運算符)
 
 ---
 
@@ -150,3 +150,32 @@ HAVING total_sales > 100;
 ```
 ---
 
+### The Rollup Operator|ROLLUP 運算符
+(在GROUP BY之後加上 WITH ROLLUP，可自動產生「每個分組的小計」以及「整體總計」行)
+
+### 📌 語法結構
+```sql
+SELECT 欄位
+FROM 資料表
+WHERE 條件
+GROUP BY 分組依據 WITH ROLLUP
+```
+
+### 📘 範例
+```sql
+-- ex
+SELECT client_id,
+       SUM(invoice_total) AS total_sales
+FROM invoices
+GROUP BY client_id WITH ROLLUP;
+```
+
+### 📘 範例
+```sql
+SELECT pm.name AS payment_methods,
+       SUM(p.amount) AS total
+FROM payments p
+JOIN payment_methods pm
+    on p.payment_method = pm.payment_method_id
+GROUP BY payment_methods WITH ROLLUP;
+```
