@@ -2,6 +2,7 @@
 
 ## 子章節索引
 - [Aggregation|聚合函數](#aggregation聚合函數)
+- [The Group By Clause|Group By 子句](#the-group-by-clausegroup-by-子句)
 
 
 ---
@@ -53,3 +54,48 @@ WHERE invoice_date BETWEEN '2019-01-01' AND '2019-12-31';
 ```
 ---
 
+### The Group By Clause|Group By 子句
+(使用 GROUP BY 將資料依指定欄位分組，常與聚合函數搭配)   
+(數據預設是按照Group By子句中指定的列排序，可使用order by 改變順序)   
+
+### 📌 語法結構
+```sql
+SELECT 欄位
+FROM 資料表
+WHERE 條件
+GROUP BY 分組依據
+```
+
+### 📘 範例
+```sql
+SELECT client_id,
+       SUM(invoice_total) AS total_sales
+FROM invoices
+WHERE invoice_date > '2019-01-01'
+GROUP BY client_id
+ORDER BY total_sales;
+```
+
+### 📘 範例
+```sql
+SELECT state,
+       city,
+       SUM(invoice_total) AS total_sales
+FROM invoices
+JOIN clients USING(client_id)
+WHERE invoice_date > '2019-01-01'
+GROUP BY state,city ;
+```
+
+### 📘 範例
+```sql
+SELECT p.date,
+       pm.name AS payment_method,
+       SUM(p.amount) AS total_payments
+FROM payments p 
+JOIN payment_methods pm
+    ON p.payment_method = pm.payment_method_id
+GROUP BY date,payment_method 
+ORDER BY date ;
+```
+---
