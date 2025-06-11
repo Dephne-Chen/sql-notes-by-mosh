@@ -3,6 +3,7 @@
 ## 子章節索引
 - [Aggregation|聚合函數](#aggregation聚合函數)
 - [The Group By Clause|Group By 子句](#the-group-by-clausegroup-by-子句)
+- [The Having Clause|Having子句](#the-having-clausehaving子句)
 
 
 ---
@@ -99,3 +100,53 @@ GROUP BY date,payment_method
 ORDER BY date ;
 ```
 ---
+
+### The Having Clause|Having子句
+(在分組後行篩選)   
+(HAVING子句裡的欄位必須在SELECT中出現)  
+
+### 📌 語法結構
+```sql
+SELECT 欄位
+FROM 資料表
+WHERE 分組前篩選條件
+GROUP BY 分組依據
+HAVING 分組後篩選條件
+```
+
+### 📘 範例
+```sql
+SELECT client_id,
+       SUM(invoice_total) AS total_sales
+FROM invoices
+GROUP BY client_id
+HAVING total_sales > 500;
+```
+
+### 📘 範例
+```sql
+SELECT client_id,
+       SUM(invoice_total) AS total_sales
+       COUNT(*) AS number_of_invoices
+FROM invoices
+GROUP BY client_id
+HAVING total_sales > 500 AND number_of_invoices > 5 ;
+```
+
+### 📘 範例
+```sql
+SELECT c.customer_id,
+       c.first_name,
+       c.last_name,
+       SUM(oi.quantity * unit_price) AS total_sales
+FROM customers c
+JOIN orders o USING(customer_id)
+JOIN order_items oi USING(order_id)
+WHERE state = 'VA'
+GROUP BY c.customer_id,
+         c.first_name,
+         c.last_name
+HAVING total_sales > 100;
+```
+---
+
