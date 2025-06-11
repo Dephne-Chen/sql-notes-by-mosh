@@ -4,7 +4,7 @@
 - [Aggregation|聚合函數](#aggregation聚合函數)
 - [The Group By Clause|Group By 子句](#the-group-by-clausegroup-by-子句)
 - [The Having Clause|Having子句](#the-having-clausehaving子句)
-- [The Rollup Operator|ROLLUP 運算符](#the-rollup-operatorrollup運算符)
+- [The Rollup Operator|Rollup 運算符](#the-rollup-operatorrollup-運算符)
 
 ---
 
