@@ -13,6 +13,7 @@
 6. [➕ UNION 合併查詢結果](06_union.md)
 7. [🛠️ 資料操作：INSERT／UPDATE／DELETE](07_insert_update_delete.md)
 8. [🔢 聚合與分組操作｜Aggregation & Grouping](08_aggregation_grouping.md)
+9. [🔗 子查詢與謂詞｜Subqueries & Predicates](09_subqueries_predicates.md)
 
 > 🚧 未來將加入：  
 > 視圖（View）、儲存過程、子查詢、索引等主題 💪
