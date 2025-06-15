@@ -16,7 +16,7 @@
 9. [🔗 子查詢與謂詞｜Subqueries & Predicates](09_subqueries_predicates.md)
 
 > 🚧 未來將加入：  
-> 視圖（View）、儲存過程、子查詢、索引等主題 💪
+> 視圖（View）、儲存過程、索引等主題 💪
 
 
 ## 💡 使用方式
