@@ -4,6 +4,8 @@
 - [Subqueries|子查詢](#subqueries子查詢)
 - [The IN Operator|IN 運算符子查詢](#the-in-operatorin-運算符子查詢)
 - [Subqueries vs Joins|子查詢 vs 連接](#subqueries-vs-joins子查詢-vs-連接)
+- [The ALL Keyword|ALL 關鍵字](#the-all-keywordall-關鍵字)
+- [The ANY Keyword|ANY 關鍵字](#the-any-keywordany-關鍵字)
 
 ---
 
@@ -112,4 +114,58 @@ WHERE oi.product_id = 3 ;
 ```
 ---
 
+### The ALL Keyword|ALL 關鍵字
+(用於多值子查詢，表示「欄位值要符合所有子查詢返回結果」，相當於比較該值與子查詢所有值的關係)
+
+### 📌 語法結構
+(多值子查詢)
+```sql
+SELECT 欄位
+FROM 資料表
+WHERE 欄位+運算符+ALL(
+    SELECT 欄位
+    FROM 資料表
+    WHERE 條件
+);
+```
+
+### 📘 範例
+```sql
+SELECT *
+FROM invoices
+WHERE invoice_total > ALL(
+    SELECT invoice_total
+    FROM invoices
+    WHERE client_id = 3
+);
+```
+---
+
+### The ANY Keyword|ANY 關鍵字
+(`ANY`（或同義的 `SOME`）用於多值子查詢，表示「只要欄位值符合子查詢結果中**任一**值即為真」。)
+
+### 📌 語法結構
+(多值子查詢)
+```sql
+SELECT 欄位
+FROM 資料表
+WHERE 欄位+運算符+ANY(
+    SELECT 欄位
+    FROM 資料表
+    WHERE 條件
+)
+```
+
+### 📘 範例
+```sql
+SELECT *
+FROM clients
+WHERE client_id = ANY(
+    SELECT client_id
+    FROM invoices
+    GROUP BY client_id
+    HAVING COUNT(*) >= 2
+);
+```
+---
 
