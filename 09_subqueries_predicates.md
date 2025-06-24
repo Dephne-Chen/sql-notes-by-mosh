@@ -7,6 +7,7 @@
 - [The ALL Keyword|ALL 關鍵字](#the-all-keywordall-關鍵字)
 - [The ANY Keyword|ANY 關鍵字](#the-any-keywordany-關鍵字)
 - [Correlated Subquaries|相關子查詢](#correlated-subquaries相關子查詢)
+- [The EXISTS Operator|Exists 運算符](#the-exists-operatorexists-運算符)
 
 ---
 
@@ -206,3 +207,29 @@ WHERE invoice_total > (
 ```
 ---
 
+### The EXISTS Operator|Exists 運算符
+(當IN運算符的集合中資料量太大，可改用EXISTS)     
+(EXISTS會回傳TRUE/FALSE)     
+
+### 📌 語法結構
+```sql
+SELECT *
+FROM 資料表 t
+WHERE EXISTS(
+    SELECT 欄位
+    FROM 資料表
+    WHERE 欄位 = t.欄位
+)
+```
+
+### 📘 範例
+```sql
+SELECT * 
+FROM products p
+WHERE NOT EXISTS (
+    SELECT product_id
+    FROM order_items
+    WHERE product_id = p.product_id
+);
+```
+---
