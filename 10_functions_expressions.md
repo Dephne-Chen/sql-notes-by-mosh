@@ -2,10 +2,7 @@
 
 ## 子章節索引
 - [Numeric Functions|數值函數](#numeric-functions數值函數)
-
-
-
-
+- [String Functions|字符串函數](#string-functions字符串函數)
 
 ---
 
@@ -35,3 +32,44 @@ SELECT
     ABS(-3.8)          AS absolute_value,  -- → 3.8
     RAND()             AS random_value;    -- → e.g. 0.4721
 ```
+---
+
+### String Functions|字符串函數
+
+### 📌 語法結構
+```sql
+LENGTH() 得到字符串的字符數
+
+UPPER() / LOWER()  將字母轉大寫/小寫
+
+LTRIM() / RTRIM() / TRIM() 清除前面空格/後面空格/前後方空格
+
+LEFT(字串,數量) / RIGHT(字串,數量) 返回字符串前方/後方特定字符數
+
+SUBSTRING(字串,起始位置,長度) 返回字符串中任何位置的字符
+
+LOCATE(要搜索的內容,字串) 返回一個字符或一串字符的匹配位置
+
+REPLACE(字串,被替換,替換) 替換一個字符或一串字符
+
+CONCAT(字串,字串) 串連兩個字符串
+```
+
+### 📘 範例
+```sql
+SELECT 
+    LENGTH('Sky') -- → 3
+    UPPER('Sky') -- → SKY
+    LOWER('Sky') -- → sky
+    LTRIM('    Sky') -- → Sky
+    RTRIM('Sky    ') -- → Sky
+    TRIM('    Sky   ') -- → Sky
+    LEFT('chocolate',5) -- → choco
+    LEFT('chocolate',4) -- → late
+    SUBSTRING('chocolate',4,2) -- → co
+    LOCATE('h','chocolate') -- → 2
+    REPLACE('chacolate','cha','cho') -- → chocolate
+    CONCAT('first','last') -- → firstlast
+```
+---
+
