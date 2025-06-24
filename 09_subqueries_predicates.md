@@ -6,6 +6,7 @@
 - [Subqueries vs Joins|子查詢 vs 連接](#subqueries-vs-joins子查詢-vs-連接)
 - [The ALL Keyword|ALL 關鍵字](#the-all-keywordall-關鍵字)
 - [The ANY Keyword|ANY 關鍵字](#the-any-keywordany-關鍵字)
+- [Correlated Subquaries|相關子查詢](#correlated-subquaries相關子查詢)
 
 ---
 
@@ -165,6 +166,42 @@ WHERE client_id = ANY(
     FROM invoices
     GROUP BY client_id
     HAVING COUNT(*) >= 2
+);
+```
+---
+
+### Correlated Subquaries|相關子查詢
+(相關子查詢是在內層子查詢中引用外層查詢的欄位，對每一筆外層資料重複執行，通常會較耗時)    
+(當資料量大時，可考慮使用 JOIN 加分組聚合代替，提高效能)    
+
+### 📌 語法結構
+```sql
+SELECT 欄位
+FROM 資料表 t
+WHERE 欄位+運算符+(
+    SELECT 欄位
+    FROM 資料表
+    WHERE 欄位 = t.欄位
+)
+```
+
+### 📘 範例
+```sql
+SELECT *
+FROM employees e
+WHERE salary > (
+    SELECT AVG(salary)
+    FROM employees
+    WHERE office_id = e.office_id
+);
+```
+```sql
+SELECT * 
+FROM invoices i
+WHERE invoice_total > (
+    SELECT AVG(invoice_total)
+    FROM invoices
+    WHERE client_id = i.client_id
 );
 ```
 ---
