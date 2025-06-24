@@ -8,6 +8,7 @@
 - [The ANY Keyword|ANY 關鍵字](#the-any-keywordany-關鍵字)
 - [Correlated Subquaries|相關子查詢](#correlated-subquaries相關子查詢)
 - [The EXISTS Operator|Exists 運算符](#the-exists-operatorexists-運算符)
+- [Subqueries in the SELECT Clause|SELECT 子句中的子查詢](#subqueries-in-the-select-clauseselect-子句中的子查詢)
 
 ---
 
@@ -231,5 +232,38 @@ WHERE NOT EXISTS (
     FROM order_items
     WHERE product_id = p.product_id
 );
+```
+---
+
+### Subqueries in the SELECT Clause|SELECT 子句中的子查詢
+
+### 📌 語法結構
+```sql
+SELECT 欄位,
+       (SELECT 欄位
+        FROM 資料表) AS 別名
+FROM 資料表
+```
+
+### 📘 範例
+```sql
+SELECT invoice_id,
+       invoice_total,
+       (SELECT AVG(invoice_total)
+       FROM invoices) AS invoice_average,
+       invoice_total - (SELECT invoice_average) AS difference
+FROM invoices ; 
+```
+
+```sql
+SELECT client_id,
+       name,
+       (SELECT SUM(invoice_total)
+       FROM invoices
+       WHERE client_id = c.client_id) AS total_sales,
+       (SELECT AVG(invoice_total)
+       FROM invoices) AS average,
+       (SELECT total_sales - average) AS difference
+FROM clients c ;
 ```
 ---
