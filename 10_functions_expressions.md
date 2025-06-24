@@ -58,18 +58,18 @@ CONCAT(字串,字串) 串連兩個字符串
 ### 📘 範例
 ```sql
 SELECT 
-    LENGTH('Sky') -- → 3
-    UPPER('Sky') -- → SKY
-    LOWER('Sky') -- → sky
-    LTRIM('    Sky') -- → Sky
-    RTRIM('Sky    ') -- → Sky
-    TRIM('    Sky   ') -- → Sky
-    LEFT('chocolate',5) -- → choco
-    LEFT('chocolate',4) -- → late
-    SUBSTRING('chocolate',4,2) -- → co
-    LOCATE('h','chocolate') -- → 2
-    REPLACE('chacolate','cha','cho') -- → chocolate
-    CONCAT('first','last') -- → firstlast
+    LENGTH('Sky')             AS len,       -- → 3
+    UPPER('Sky')              AS upper_sky, -- → SKY
+    LOWER('Sky')              AS lower_sky, -- → sky
+    LTRIM('   Sky')           AS ltrimmed,  -- → 'Sky'
+    RTRIM('Sky   ')           AS rtrimmed,  -- → 'Sky'
+    TRIM('   Sky   ')         AS trimmed,   -- → 'Sky'
+    LEFT('chocolate', 5)      AS left5,     -- → choco
+    RIGHT('chocolate', 4)     AS right4,    -- → late
+    SUBSTRING('tree', 2, 2)   AS substr,    -- → re
+    LOCATE('h', 'chocolate')  AS pos,       -- → 2
+    REPLACE('trea','ea','ee') AS fixed,     -- → tree
+    CONCAT('first','last')    AS full       -- → firstlast
 ```
 ---
 
