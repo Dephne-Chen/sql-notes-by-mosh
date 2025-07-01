@@ -5,6 +5,7 @@
 - [String Functions|字符串函數](#string-functions字符串函數)
 - [Date Functions|日期函數](#date-functions日期函數)
 - [Formatting Dates and Times|格式化日期和時間](#formatting-dates-and-times格式化日期和時間)
+- [Calculating Dates and Times|計算日期與時間](#calculating-dates-and-times計算日期與時間)
 
 ---
 
@@ -137,3 +138,26 @@ SELECT DATE_FORMAT('2025-07-01', '%M %d %y');
 SELECT TIME_FORMAT(NOW(),'%H : %i %p');
 ```
 ---
+
+### Calculating Dates and Times|計算日期與時間
+
+### 📌 語法結構
+```sql
+DATE_ADD(時間值,表達式) 給日期時間值加減值
+DATE_SUB(時間值,表達式) 給日期時間值減值
+DATEDIFF(日期1,日期2) 計算兩日期間隔(只返回天數)
+TIME_TO_SEC(時間1) 返回從零點計算的秒數
+```
+
+### 📘 範例
+```sql
+SELECT DATE_ADD(NOW(),INTERVAL 1 DAY);
+SELECT DATE_ADD(NOW(),INTERVAL -1 YEAR);
+SELECT DATE_SUB(NOW(),INTERVAL 1 MONTH);
+```
+```sql
+SELECT DATEDIFF('2025-07-04','2025-07-01');
+SELECT TIME_TO_SEC('09:04') - TIME_TO_SEC('09:00');
+```
+---
+
