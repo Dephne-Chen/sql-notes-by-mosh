@@ -73,3 +73,33 @@ SELECT
 ```
 ---
 
+### Date Functions|日期函數
+
+### 📌 語法結構
+```sql
+NOW() 當前日期與時間
+
+CURDATE() 當前日期
+
+CURTIME() 當前時間
+
+YEAR()/MONTH()/DATE() 提取年份/月份/日期
+
+HOUR()/MINUTE()/SECOND() 提取時刻/分鐘/秒數
+
+DAYNAME()/MONTHNAME()  獲取字符串格式的星期數/月份
+
+EXTRACT(想提取的單位 + FROM + 時間日期值)
+```
+
+### 📘 範例
+```sql
+SELECT *
+FROM orders
+WHERE YEAR(order_date) = YEAR(NOW());
+```
+```sql
+SELECT EXTRACT(YEAR FROM NOW());
+```
+---
+
