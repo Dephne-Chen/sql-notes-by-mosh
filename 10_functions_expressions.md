@@ -6,7 +6,8 @@
 - [Date Functions|日期函數](#date-functions日期函數)
 - [Formatting Dates and Times|格式化日期和時間](#formatting-dates-and-times格式化日期和時間)
 - [Calculating Dates and Times|計算日期與時間](#calculating-dates-and-times計算日期與時間)
-- [THE IFNULL and Coalesce|IFNULL 和 Coalesce 函數](#the-ifnull-and-coalesceifnull-和-coalesce-函數)
+- [The IFNULL and Coalesce|IFNULL 和 Coalesce 函數](#the-ifnull-and-coalesceifnull-和-coalesce-函數)
+- [The IF Functions|IF 函數](#the-if-functionsif-函數)
 
 ---
 
@@ -162,7 +163,7 @@ SELECT TIME_TO_SEC('09:04') - TIME_TO_SEC('09:00');
 ```
 ---
 
-### THE IFNULL and Coalesce|IFNULL 和 Coalesce 函數
+### The IFNULL and Coalesce|IFNULL 和 Coalesce 函數
 
 ### 📌 語法結構
 ```sql
@@ -181,3 +182,23 @@ SELECT order_id,
 FROM orders;
 ```
 ---
+
+### The IF Functions|IF 函數
+
+### 📌 語法結構
+```sql
+IF(表達式, 是返回值, 否返回值)
+```
+
+### 📘 範例
+```sql
+SELECT order_id,
+       order_date,
+       IF(
+           YEAR(order_date)=YEAR(NOW()),
+          'Active',
+          'Archived') AS category
+FROM orders;
+```
+---
+
