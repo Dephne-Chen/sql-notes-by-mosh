@@ -3,6 +3,7 @@
 ## 子章節索引
 - [Numeric Functions|數值函數](#numeric-functions數值函數)
 - [String Functions|字符串函數](#string-functions字符串函數)
+- [Date Functions|日期函數](#date-functions日期函數)
 
 ---
 
