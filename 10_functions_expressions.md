@@ -6,6 +6,7 @@
 - [Date Functions|日期函數](#date-functions日期函數)
 - [Formatting Dates and Times|格式化日期和時間](#formatting-dates-and-times格式化日期和時間)
 - [Calculating Dates and Times|計算日期與時間](#calculating-dates-and-times計算日期與時間)
+- [THE IFNULL and Coalesce|IFNULL 和 Coalesce 函數](#the-ifnull-and-coalesceifnull-和-coalesce-函數)
 
 ---
 
@@ -161,3 +162,22 @@ SELECT TIME_TO_SEC('09:04') - TIME_TO_SEC('09:00');
 ```
 ---
 
+### THE IFNULL and Coalesce|IFNULL 和 Coalesce 函數
+
+### 📌 語法結構
+```sql
+IFNULL(欄位, 要返回的值) 如果欄位為空則返回值
+COALESCE(欄位1, 欄位２, 要返回的值) 如果欄位1為空則返回欄位2,若欄位2為空則返回值
+```
+### 📘 範例
+```sql
+SELECT order_id,
+       IFNULL(shipper_id,'未分配') AS Shipper 
+FROM orders;
+```
+```sql
+SELECT order_id,
+       COALESCE(shipper_id,comments,'未分配') AS Shipper 
+FROM orders;
+```
+---
