@@ -8,6 +8,7 @@
 - [Calculating Dates and Times|計算日期與時間](#calculating-dates-and-times計算日期與時間)
 - [The IFNULL and Coalesce|IFNULL 和 Coalesce 函數](#the-ifnull-and-coalesceifnull-和-coalesce-函數)
 - [The IF Functions|IF 函數](#the-if-functionsif-函數)
+- [The CASE Operator|Case 運算符](#the-case-operatorcase-運算符)
 
 ---
 
@@ -202,3 +203,28 @@ FROM orders;
 ```
 ---
 
+### The CASE Operator|Case 運算符
+提供多條件判斷，根據第一個符合的 `WHEN` 子句返回對應值，未符合則返回 `ELSE`，可取代多層嵌套 `IF`    
+
+### 📌 語法結構
+```sql
+SELECT
+    CASE
+        WHEN 子句1 THEN 返回值1
+        WHEN 子句2 THEN 返回值2
+        ELSE 返回值3
+    END
+FROM 資料表
+```
+
+### 📘 範例
+```sql
+SELECT order_id
+       CASE
+           WHEN YEAR(order_date) = YEAR(NOW()) THEN 'Active'
+           WHEN YEAR(order_date) = YEAR(NOW())-1 THEN 'Last Year'
+           WHEN YEAR(order_date) < YEAR(NOW())-1 THEN 'Archived'
+           ELSE 'Future'
+       END AS category
+FROM orders;
+```
