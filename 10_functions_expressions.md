@@ -4,6 +4,7 @@
 - [Numeric Functions|數值函數](#numeric-functions數值函數)
 - [String Functions|字符串函數](#string-functions字符串函數)
 - [Date Functions|日期函數](#date-functions日期函數)
+- [Formatting Dates and Times|格式化日期和時間](#formatting-dates-and-times格式化日期和時間)
 
 ---
 
@@ -104,3 +105,35 @@ SELECT EXTRACT(YEAR FROM NOW());
 ```
 ---
 
+### Formatting Dates and Times|格式化日期和時間
+
+### 📌 語法結構
+```sql
+DATE_FORMAT(日期值, 格式字符串)
+DATE_FORMAT(時間點, 格式字符串)
+```
+```sql
+# 常用格式符號
+%y -> 兩位數的年份 25
+%Y -> 四位數的年份 2025
+%m -> 兩位數的月份 07
+%M -> 月份名稱 July
+%d -> 兩位數的日期 01
+%D -> 日期名稱 1st
+%a -> 星期 Tue    
+
+%H -> 代表小時 24小時制
+%h -> 代表小時 12小時制
+%i -> 代表分鐘
+%s -> 代表秒數
+%p -> pm or am
+```
+### 📘 範例
+```sql
+SELECT DATE_FORMAT('2025-07-01', '%M %d %y');
+```
+
+```sql
+SELECT TIME_FORMAT(NOW(),'%H : %i %p');
+```
+---
