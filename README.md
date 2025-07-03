@@ -15,9 +15,10 @@
 8. [🔢 聚合與分組操作｜Aggregation & Grouping](08_aggregation_grouping.md)
 9. [🔗 子查詢與謂詞｜Subqueries & Predicates](09_subqueries_predicates.md)
 10. [⚙️ 函數與運算式｜Functions & Expressions](10_functions_expressions.md)
+11. [🖼️ 視圖全攻略｜Views Guide](11_views_guide.md)
 
 > 🚧 未來將加入：  
-> 視圖（View）、儲存過程、索引等主題 💪
+> 儲存過程、索引等主題 💪
 
 
 ## 💡 使用方式
