@@ -4,6 +4,7 @@
 - [Creating Views|創建視圖](#creating-views創建視圖)
 - [Altering or Dropping Views|更改或刪除視圖](#altering-or-dropping-views更改或刪除視圖)
 - [Updattable Views|可更新視圖](#updattable-views可更新視圖)
+- [The WITH OPTION CHECK Clause|WITH OPTION CHECK 子句](#the-with-option-check-clausewith-option-check-子句)
 
 
 ---
@@ -91,6 +92,34 @@ WHERE order_id = 102 AND product_id = 2;
 -- 在視圖上執行 INSERT
 INSERT INTO order_items_view (order_id, product_id, quantity, unit_price)
 VALUES (103, 8, 3, 19.99);
+```
+---
+
+### The WITH OPTION CHECK Clause|WITH OPTION CHECK 子句
+視圖的默認行為，當通過視圖更新或刪除數據時，有一些行會不見。    
+WITH CHECK OPTION 可防止更新或刪除語句時將行從視圖刪除。
+
+### 📌 語法結構
+```sql
+CREATE VIEW 別名 AS
+SELECT *
+FROM 資料表
+WITH CHECK OPTION
+```
+
+### 📘 範例
+```sql
+-- 建立視圖，加入 WITH CHECK OPTION
+CREATE VIEW active_customers AS
+SELECT customer_id, name, status
+FROM   customers
+WHERE  status = 'active'
+WITH  CHECK OPTION;
+
+UPDATE active_customers
+SET    status = 'inactive'
+WHERE  customer_id = 42;
+-> 嘗試透過視圖更新，若結果不再符合 status='active'，將會失敗報錯
 ```
 ---
 
