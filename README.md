@@ -16,6 +16,7 @@
 9. [🔗 子查詢與謂詞｜Subqueries & Predicates](09_subqueries_predicates.md)
 10. [⚙️ 函數與運算式｜Functions & Expressions](10_functions_expressions.md)
 11. [🖼️ 視圖全攻略｜Views Guide](11_views_guide.md)
+12. [🗄️存儲例程與變量｜Stored Routines & Variables](12_stored_routines.md)
 
 > 🚧 未來將加入：  
 > 儲存過程、索引等主題 💪
